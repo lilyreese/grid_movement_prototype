@@ -1,6 +1,8 @@
 @tool
 class_name Unit extends Path2D
 
+# Classe responsável pelo comportamento das unidades dentro do jogo.
+
 signal finished_walking
 
 @onready var path_follow_2d: PathFollow2D = $PathFollow2D
