@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://bobolixg5t57q"]
+
+[ext_resource type="PackedScene" uid="uid://cb8m7x00eldi8" path="res://unit_system/unit.tscn" id="1_2wg0b"]
+[ext_resource type="Script" path="res://board_system/game_board.gd" id="1_anunh"]
+[ext_resource type="Script" path="res://cursor_system/cursor.gd" id="2_floee"]
+[ext_resource type="PackedScene" uid="uid://d0otw8qsstyv3" path="res://overlay_system/walkable_cell_overlay.tscn" id="4_38c2n"]
+
+[node name="GameBoard" type="Node2D"]
+script = ExtResource("1_anunh")
+
+[node name="Cursor" type="Node2D" parent="."]
+z_index = 10
+script = ExtResource("2_floee")
+
+[node name="Units" type="Node" parent="."]
+
+[node name="GodotUnit" parent="Units" instance=ExtResource("1_2wg0b")]
+position = Vector2(840, 440)
+move_range = 3
+current_cell = Vector2(10, 5)
+
+[node name="GodotUnit2" parent="Units" instance=ExtResource("1_2wg0b")]
+position = Vector2(1080, 440)
+move_range = 3
+current_cell = Vector2(13, 5)
+
+[node name="GodotUnit3" parent="Units" instance=ExtResource("1_2wg0b")]
+position = Vector2(920, 440)
+move_range = 3
+current_cell = Vector2(11, 5)
+
+[node name="GodotUnit4" parent="Units" instance=ExtResource("1_2wg0b")]
+position = Vector2(1160, 440)
+move_range = 3
+current_cell = Vector2(14, 5)
+
+[node name="GodotUnit5" parent="Units" instance=ExtResource("1_2wg0b")]
+position = Vector2(1080, 600)
+move_range = 3
+current_cell = Vector2(13, 7)
+
+[node name="Terrain" type="Node" parent="."]
+
+[node name="Overlays" type="Node" parent="."]
+
+[node name="WalkableCellOverlay" parent="Overlays" instance=ExtResource("4_38c2n")]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0otw8qsstyv3"]
+
+[ext_resource type="Script" path="res://overlay_system/walkable_cell_overlay.gd" id="1_f3ti6"]
+[ext_resource type="Texture2D" uid="uid://bg1om1gf3xmp0" path="res://overlay_system/walkable_overlay.png" id="1_sns7i"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wno0r"]
+texture = ExtResource("1_sns7i")
+texture_region_size = Vector2i(80, 80)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_2gbh7"]
+tile_size = Vector2i(80, 80)
+sources/1 = SubResource("TileSetAtlasSource_wno0r")
+
+[node name="WalkableCellOverlay" type="TileMap"]
+z_index = -1
+tile_set = SubResource("TileSet_2gbh7")
+format = 2
+script = ExtResource("1_f3ti6")

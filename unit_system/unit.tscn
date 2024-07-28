@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=3 uid="uid://cb8m7x00eldi8"]
+
+[ext_resource type="Script" path="res://unit_system/unit.gd" id="1_rbsh4"]
+[ext_resource type="Texture2D" uid="uid://6malhppcoros" path="res://icon.svg" id="2_8qcm5"]
+
+[sub_resource type="Animation" id="Animation_kne7a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_p8p6s"]
+resource_name = "idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1gox1"]
+resource_name = "selected"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.291701, 0.160425, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wjkbu"]
+_data = {
+"RESET": SubResource("Animation_kne7a"),
+"idle": SubResource("Animation_p8p6s"),
+"selected": SubResource("Animation_1gox1")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_8rna6"]
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Unit" type="Path2D" groups=["Unit"]]
+script = ExtResource("1_rbsh4")
+move_range = 5
+sprite = ExtResource("2_8qcm5")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotates = false
+cubic_interp = false
+loop = false
+
+[node name="Sprite2D" type="Sprite2D" parent="PathFollow2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_8qcm5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wjkbu")
+}
+autoplay = "idle"
+
+[node name="DebugLabel" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -34.0
+offset_right = 20.0
+offset_bottom = -11.0
+text = "(1,1)"
+label_settings = SubResource("LabelSettings_8rna6")
+horizontal_alignment = 1
+vertical_alignment = 1

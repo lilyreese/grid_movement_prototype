@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://386hfoel37kp"]
+
+[ext_resource type="Script" path="res://cursor_system/cursor.gd" id="1_leele"]
+[ext_resource type="Texture2D" uid="uid://irqyndpmlptq" path="res://cursor_system/cursor_arrow.png" id="2_oh0uv"]
+
+[node name="Cursor" type="Node2D"]
+script = ExtResource("1_leele")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.18667, 0, 0.994262, 1)
+texture = ExtResource("2_oh0uv")
+offset = Vector2(0, -40)
